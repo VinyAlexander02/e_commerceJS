@@ -1,0 +1,58 @@
+export const catalog = [
+    {
+        id: "1",
+        name: `TOP TÉCNICO COM CAPUZ`,
+        brand: `Zara`,
+        price: 229,
+        nameImageFile: `product-1.jpg`,
+    },
+    {
+        id: "2",
+        name: `JEANS TRF CARGO DE CINTURA MÉDIA`,
+        brand: `Zara`,
+        price: 379,
+        nameImageFile: `product-2.jpg`,
+    },
+    {
+        id: "3",
+        name: `BOLSA TOTE BAG DENIM TRF`,
+        brand: `Zara`,
+        price: 259,
+        nameImageFile: `product-3.jpg`,
+    },
+    {
+        id: "4",
+        name: `CAMISETA DENIM LIMITED EDITION`,
+        brand: `Zara`,
+        price: 379,
+        nameImageFile: `product-4.jpg`,
+    },
+    {
+        id: "5",
+        name: `BONÉ LAVADO LIMITED EDITION`,
+        brand: `Zara`,
+        price: 199,
+        nameImageFile: `product-5.jpg`,
+    },
+    {
+        id: "6",
+        name: `TÊNIS COM PEÇAS LIMITED EDITION`,
+        brand: `Zara`,
+        price: 379,
+        nameImageFile: `product-6.jpg`,
+    },
+    {
+        id: "7",
+        name: `CAMISA COM ESTAMPA DEGRADÊ`,
+        brand: `Zara`,
+        price: 339,
+        nameImageFile: `product-7.jpg`,
+    },
+    {
+        id: "8",
+        name: `CORRENTE COM ELOS LIMITED EDITION`,
+        brand: `Zara`,
+        price: 179,
+        nameImageFile: `product-8.jpg`,
+    },
+];

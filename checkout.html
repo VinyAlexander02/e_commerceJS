@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>VM Store</title>
+  </head>
+
+  <body class="bg-stone-200 flex flex-col h-screen">
+    <header class="flex bg-indigo-950 p-2 justify-between items-center">
+      <img class="h-12" src="./assets/logo.jpg" alt="logo" />
+    </header>
+    <form class="flex w-100 px-5 py-10 gap-4 grow">
+      <section id="userData" class="w-1/3 bg-white rounded-lg py-5">
+        <p class="mb-5 text-center font-bold">Dados do Usuário</p>
+        <div class="flex flex-col px-10 py-3">
+          <label for="userName" class="font-bold text-sm mb-2"> Nome </label>
+          <input
+            type="text"
+            id="userName"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="Vinícius"
+            required
+          />
+        </div>
+        <div class="flex flex-col px-10 py-3">
+          <label for="userEmail" class="font-bold text-sm mb-2"> E-mail </label>
+          <input
+            type="email"
+            id="userEmail"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="vinicius@vinicius.com"
+            required
+          />
+        </div>
+        <div class="flex flex-col px-10 py-3">
+          <label for="userPhone" class="font-bold text-sm mb-2">
+            Telefone de contato
+          </label>
+          <input
+            type="tel"
+            id="userPhone"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="(xx) xxxxx-xxxx"
+            required
+          />
+        </div>
+      </section>
+      <section id="paymentData" class="w-1/3 bg-white rounded-lg py-5">
+        <p class="mb-5 text-center font-bold">Pagamento</p>
+        <div class="flex flex-col px-10 py-3">
+          <label for="cardNumber" class="font-bold text-sm mb-2">
+            Número do Cartão
+          </label>
+          <input
+            type="text"
+            id="cardNumber"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="1111 1111 1111 1111"
+            required
+          />
+        </div>
+        <div class="flex">
+          <div class="flex flex-col px-10 py-3 w-1/2">
+            <label for="cardCvv" class="font-bold text-sm mb-2"> CVV </label>
+            <input
+              type="text"
+              id="cardCvv"
+              class="rounded-sm px-2 border-2 border-slate-200 py-1"
+              placeholder="222"
+              required
+            />
+          </div>
+          <div class="flex flex-col px-10 py-3 w-1/2">
+            <label for="cardVal" class="font-bold text-sm mb-2">
+              Data de Validade
+            </label>
+            <input
+              type="text"
+              id="cardVal"
+              class="rounded-sm px-2 border-2 border-slate-200 py-1"
+              placeholder="09/32"
+              required
+            />
+          </div>
+        </div>
+        <div class="flex flex-col px-10 py-3">
+          <label for="CEP" class="font-bold text-sm mb-2"> CEP </label>
+          <input
+            type="text"
+            id="CEP"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="11111-111"
+            required
+          />
+        </div>
+        <div class="flex flex-col px-10 py-3">
+          <label for="adress" class="font-bold text-sm mb-2"> Endereço </label>
+          <input
+            type="text"
+            id="adress"
+            class="rounded-sm px-2 border-2 border-slate-200 py-1"
+            placeholder="Rua Batista Donzeli"
+            required
+          />
+        </div>
+        <div class="flex">
+          <div class="flex flex-col px-10 py-3 w-1/2">
+            <label for="adressNumber" class="font-bold text-sm mb-2">
+              Número
+            </label>
+            <input
+              type="text"
+              id="adressNumber"
+              class="rounded-sm px-2 border-2 border-slate-200 py-1"
+              placeholder="333"
+              required
+            />
+          </div>
+          <div class="flex flex-col px-10 py-3 w-1/2">
+            <label for="complement" class="font-bold text-sm mb-2">
+              Complemento
+            </label>
+            <input
+              type="text"
+              id="complement"
+              class="rounded-sm px-2 border-2 border-slate-200 py-1"
+              placeholder="555"
+              required
+            />
+          </div>
+        </div>
+      </section>
+      <section id="productsCheckout" class="w-1/3 bg-white rounded-lg py-5">
+        <section
+          id="productsContainerCheckout"
+          class="h-4/5 overflow-y-auto px-2"
+        ></section>
+        <section id="checkoutCell" class="flex flex-col px-2 h-1/5 justify-around">
+          <p
+            id="total-price"
+            class="bg-slate-200 text-green-800 rounded-lg pl-5"
+          >
+            Total
+          </p>
+          <button
+            class="bg-slate-900 text-slate-200 p-1 hover:bg-slate-800"
+            type="submit"
+          >
+            Finalizar Compra
+          </button>
+        </section>
+      </section>
+    </form>
+    <script src="./checkout.js" type="module"></script>
+  </body>
+</html>

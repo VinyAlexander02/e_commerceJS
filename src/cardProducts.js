@@ -3,7 +3,7 @@ import { addCart } from "./menuCart";
 
 export function catalogRender() {
     for (const i of catalog) {
-        const productCard = `<div class='border-solid shadow-xl shadowm-slate-400 w-48 m-2 rounded-lg flex flex-col p-2 justify-between group' id="product-card-${catalog.id}">
+        const productCard = `<div class='border-solid shadow-xl shadowm-slate-400 w-48 m-2 rounded-lg flex flex-col p-2 justify-between group ${catalog.female ? 'female' : 'male'}' id="product-card-${catalog.id}">
           <img
             src="./assets/${i.nameImageFile}"
             alt="Product 1"

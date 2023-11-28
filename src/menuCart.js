@@ -1,6 +1,6 @@
-import { catalog } from "./utils";
+import { catalog, localstorageRead, localstorageSave } from "./utils";
 
-const cartProductIdsQuantity = {};
+const cartProductIdsQuantity = localstorageRead("cart") ?? {};
 
 function openCart() {
   document.getElementById("cart").classList.add("right-[0px]");
@@ -12,31 +12,46 @@ function closeCart() {
   document.getElementById("cart").classList.add("right-[-360px]");
 }
 
+function checkout(){
+  if(Object.keys(cartProductIdsQuantity).length === 0){
+    return;
+  }
+  window.location.href = window.location.origin + '/checkout.html';
+}
+
 export function cartStart() {
   const closeCartButton = document.getElementById("closeCart");
   const openCartButton = document.getElementById("openCart");
+  const checkoutButton = document.getElementById('completePurchase')
 
   closeCartButton.addEventListener("click", closeCart);
   openCartButton.addEventListener("click", openCart);
+  checkoutButton.addEventListener('click', checkout);
 }
+
 
 function removeCartElement(productId) {
   delete cartProductIdsQuantity[productId];
+  localstorageSave("cart", cartProductIdsQuantity);
+  updateCartPrice();
   productCartRender();
-
 }
 
 function quantityProductIncremnet(productId) {
   cartProductIdsQuantity[productId]++;
+  localstorageSave("cart", cartProductIdsQuantity);
+  updateCartPrice();
   quantityUpdate(productId);
 }
 
 function quantityProductDecrement(productId) {
-  if(cartProductIdsQuantity[productId] === 1){
+  if (cartProductIdsQuantity[productId] === 1) {
     removeCartElement(productId);
-    return
+    return;
   }
   cartProductIdsQuantity[productId]--;
+  localstorageSave("cart", cartProductIdsQuantity);
+  updateCartPrice();
   quantityUpdate(productId);
 }
 
@@ -45,7 +60,7 @@ function quantityUpdate(productId) {
     cartProductIdsQuantity[productId];
 }
 
-function productCartDesign(productId){
+function productCartDesign(productId) {
   const product = catalog.find((p) => p.id === productId);
 
   const containerCartProducts = document.getElementById("cartProducts");
@@ -67,7 +82,9 @@ function productCartDesign(productId){
     <button id="remove-item-${product.id}" class="absolute top-0 right-2"> 
       <i class="fa-solid fa-circle-xmark text-red-500 hover:text-red-900 duration-300 pb-3"></i> 
     </button>
-    <img src="./assets/${product.nameImageFile}" alt="Carrinho: ${product.name}" class="h-24 rounded-lg" />
+    <img src="./assets/${product.nameImageFile}" alt="Carrinho: ${
+    product.name
+  }" class="h-24 rounded-lg" />
     <div class="p-2 flex flex-col justify-between">
       <p class="text-slate-900 text-sm"> ${product.name} </p>
       <p class="text-slate-400 text-xs"> Tamanho: M </p>
@@ -75,11 +92,13 @@ function productCartDesign(productId){
     </div>
     <div class="flex text-slate-950 items-end absolute bottom-0 right-2 text-lg">
         <button id="productDecrement-${product.id}" class=""> - </button>
-        <p id="quantity-${product.id}" class="ml-2"> ${cartProductIdsQuantity[product.id]} </p>
+        <p id="quantity-${product.id}" class="ml-2"> ${
+    cartProductIdsQuantity[product.id]
+  } </p>
         <button id="productIncrement-${product.id}" class="ml-2"> + </button>
     </div>
   `;
-  
+
   articleElement.innerHTML = cardProductCart;
   containerCartProducts.appendChild(articleElement);
 
@@ -94,18 +113,15 @@ function productCartDesign(productId){
   document
     .getElementById(`remove-item-${product.id}`)
     .addEventListener("click", () => removeCartElement(product.id));
-
 }
 
-
-function productCartRender() {
+export function productCartRender() {
   const containerCartProducts = document.getElementById("cartProducts");
   containerCartProducts.innerHTML = "";
 
   for (const productId in cartProductIdsQuantity) {
-    productCartDesign(productId)
+    productCartDesign(productId);
   }
-
 }
 
 export function addCart(productId) {
@@ -115,5 +131,17 @@ export function addCart(productId) {
   }
 
   cartProductIdsQuantity[productId] = 1;
+  localstorageSave("cart", cartProductIdsQuantity);
   productCartDesign(productId);
+}
+
+export function updateCartPrice() {
+  const cartPrice = document.getElementById("total-price");
+  let totalCartPrice = 0;
+  for (const productIdCart in cartProductIdsQuantity) {
+    totalCartPrice +=
+      catalog.find((p) => p.id === productIdCart).price *
+      cartProductIdsQuantity[productIdCart];
+  }
+  cartPrice.innerHTML = `Total: R$${totalCartPrice}`;
 }

@@ -31,28 +31,58 @@
         id="total-price"
         class="bg-slate-200 text-green-800 rounded-sm pl-5"
       ></p>
-      <button id="completePurchase" class="bg-slate-200 text-slate-900 p-1 hover:text-slate-900 hover:bg-slate-200">Finalizar Compra</button>
+      <button
+        id="completePurchase"
+        class="bg-slate-200 text-slate-900 p-1 hover:text-slate-900 hover:bg-slate-200"
+      >
+        Finalizar Compra
+      </button>
     </section>
     <header class="flex bg-indigo-950 p-2 justify-between items-center">
-      <img class="h-16" src="./assets/logo.jpg" alt="logo" />
+      <a href="/">
+        <img class="h-16" src="./assets/logo.jpg" alt="logo" />
+      </a>
       <div class="text-slate-200 gap-2 mx-2">
         <button id="openCart"><i class="fa-solid fa-cart-shopping"></i></button>
-        <button><i class="fa-solid fa-user"></i></button>
+        <a href="/pedidos.html">
+          <button><i class="fa-solid fa-user"></i></button>
+        </a>
       </div>
     </header>
     <main class="flex flex-col items-center">
       <section id="filters" class="p-10 flex">
         <div class="px-2">
-          <input id="all" type="radio" name="filter" class="peer hidden" checked/>
-          <label for="all" class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"> Todos </label>
+          <input
+            id="all"
+            type="radio"
+            name="filter"
+            class="peer hidden"
+            checked
+          />
+          <label
+            for="all"
+            class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"
+          >
+            Todos
+          </label>
         </div>
         <div class="px-2">
-          <input id="male" type="radio" name="filter" class="peer hidden"/>
-          <label for="male" class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"> Masculino </label>
+          <input id="male" type="radio" name="filter" class="peer hidden" />
+          <label
+            for="male"
+            class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"
+          >
+            Masculino
+          </label>
         </div>
         <div class="px-2">
-          <input id="female" type="radio" name="filter" class="peer hidden"/>
-          <label for="female" class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"> Feminino </label>
+          <input id="female" type="radio" name="filter" class="peer hidden" />
+          <label
+            for="female"
+            class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-x1 select-none cursor-pointer"
+          >
+            Feminino
+          </label>
         </div>
       </section>
       <section id="product-container" class="flex flex-wrap"></section>

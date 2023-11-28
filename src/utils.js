@@ -73,6 +73,10 @@ export function localstorageRead(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
+export function localStorageDelete(key) {
+  localStorage.removeItem(key);
+}
+
 export function productCartSimple(productId, containerId, produtQuantity) {
   const product = catalog.find((p) => p.id === productId);
 
@@ -85,7 +89,8 @@ export function productCartSimple(productId, containerId, produtQuantity) {
     "rounded-lg",
     "p-1,",
     "relative",
-    'mb-2',
+    "mb-2",
+    "w-96",
   ];
 
   for (const articleClass of articleClasses) {
@@ -93,9 +98,7 @@ export function productCartSimple(productId, containerId, produtQuantity) {
   }
 
   const cardProductCart = `
-      <img src="./assets/${product.nameImageFile}" alt="Carrinho: ${
-    product.name
-  }" class="h-24 rounded-lg" />
+      <img src="./assets/${product.nameImageFile}" alt="Carrinho: ${product.name}" class="h-24 rounded-lg" />
       <div class="p-2 flex flex-col justify-between">
         <p class="text-slate-900 text-sm"> ${product.name} </p>
         <p class="text-slate-400 text-xs"> Tamanho: M </p>
